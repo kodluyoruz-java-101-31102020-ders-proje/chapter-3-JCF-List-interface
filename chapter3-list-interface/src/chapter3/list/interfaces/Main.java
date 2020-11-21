@@ -1,5 +1,6 @@
 package chapter3.list.interfaces;
 
+import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
@@ -8,10 +9,9 @@ import java.util.Vector;
 
 public class Main {
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws InstantiationException, IllegalAccessException, NoSuchMethodException, SecurityException, IllegalArgumentException, InvocationTargetException {
 		
-		
-		runArrayListSample();
+		//runArrayListSample();
 		
 		//runLinkedListSample();
 		
@@ -19,9 +19,18 @@ public class Main {
 		
 		//runStackSample();
 	}
-
+	
 	public static void runArrayListSample() {
 		
+		// ********* ArrayList Örneği *********
+		// ArrayList sınıfı String tipindeki verilerle çalışacaktır.
+		// JCF, Generic yapısını çok yoğun şekilde kullanır.
+		// Elimizdeki veri kümesi üzerinde yoğunlukla okuma işlemi yapacaksak ArrayList kullanmak mantıklıdır.
+		// Array yapısı verileri blok halinde ardışık şekilde saklar.
+		// Dolayısıyla ardışık verileri okumak çok daha hızlıdır.
+		// Eğer elimizdeki veri kümesine yoğun şekilde ekleme çıkarma yapılacaksa ArrayList kullanılmamalıdır.
+		// Array'den eleman çıkarmak eklemek sonucunda kaydırma işlemi uygulanmalıdır.
+		// Bu performansı etkileyen bir durumdur. Bu tarz bir senaryoda verileri LinkedList veri tipinde saklamak daha mantıklıdır.
 		List<String> nameList = new ArrayList<String>();
 		nameList.add("Gamze");
 		nameList.add("Elif");
@@ -93,10 +102,15 @@ public class Main {
 		
 		// listedeki tüm elemanları temizler. yani tümünü listeden siler.
 		nameList.clear();
+		
+		// ********* ArrayList Örneği *********
 	}
 	
 	public static void runLinkedListSample() {
 		
+		// ********* LinkedList Örneği *********
+		// Veri yapılarındaki çift yönlü bağlı listeyi ifade eder.
+		// Veri kümesine yoğun şekilde eleman ekleme çıkarma işleme yapılacaksa bu durumda tercih edilmelidir.
 		List<String> nameList = new LinkedList<String>();
 		nameList.add("Hale");
 		nameList.add("Jale");
@@ -108,12 +122,12 @@ public class Main {
 		// get ile listeden eleman okuması yapılır. Okunan eleman listeden çıkartılmaz.
 		System.out.println("Element of 1 index: " + nameList.get(1));
 		System.out.println("Element of 2 index: " + nameList.get(2));
-		
-		
+		// ********* LinkedList Örneği *********
 	}
 	
 	public static void runVectorSample() {
 		
+		// ********* Vector Örneği *********
 		Vector<String> vectorOfNames = new Vector<String>();
 		vectorOfNames.add("Ahmet");
 		vectorOfNames.add("Hale");
@@ -126,11 +140,14 @@ public class Main {
 		// get ile listeden eleman okuması yapılır. Okunan eleman listeden çıkartılmaz.
 		System.out.println("Element of 1 index: " + vectorOfNames.get(0));
 		System.out.println("Element of 2 index: " + vectorOfNames.get(1));
-				
+		// ********* Vector Örneği *********
 	}
 	
 	public static void runStackSample() {
 		
+		// ********* Stack Örneği *********
+		// Veri yapılarındaki Stack veri yapısının Java'da kodlanmış halidir.
+		// Tabakların üst üste konulmasını Stack yapısına benzetebilirsiniz.
 		Stack<String> stackNames = new Stack<String>();
 		stackNames.push("Mehmet");
 		stackNames.push("Lale");
@@ -142,6 +159,7 @@ public class Main {
 		System.out.println(stackNames.pop());
 		
 		printAll(stackNames);
+		// ********* Stack Örneği *********
 	}
 	
 	public static void printAll(List<String> nameList) {
